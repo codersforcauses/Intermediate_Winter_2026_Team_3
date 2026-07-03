@@ -1,4 +1,11 @@
+'use client';
+
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import clsx from 'clsx';
+
 export function CenterNav () {
+	const pathname = usePathname();
 	return	(
 		<nav
 		   className="flex py-6 px-4 md:px-8 bg-white border-b border-slate-300 dark:border-neutral-700 dark:bg-green-600 min-h-[68px] relative z-20"
@@ -11,9 +18,9 @@ export function CenterNav () {
 				 <img src="https://readymadeui.com/logo-alt.svg" alt="readymadeui logo" className="h-9 w-auto" />
 		      </a>
 		      <div className="py-0 px-32">
-			      <a href='#' className="hover:text-blue-700 dark:hover:text-blue-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded"> 
+			      <Link href='/dashboard' className="hover:text-blue-700 dark:hover:text-blue-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded"> 
 				Big Chungas 
-			      </a>
+			      </Link>
 		      </div>
 	           </div>
 
@@ -41,31 +48,37 @@ export function CenterNav () {
 
 			 <ul className="flex flex-col gap-8 font-semibold text-sm text-slate-900 dark:text-slate-50 lg:flex-row max-lg:p-6">
 			    <li>
-			       <a href="#"
-				  className="hover:text-blue-700 dark:hover:text-blue-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded"
-				  aria-current="page">Home</a>
+			       <Link href="/dashboard/stats"
+				  className={clsx("hover:text-blue-700 dark:hover:text-blue-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded",
+				  {
+					  'bg-sky-100 text-blue-600': pathname === "/dashboard/stats"
+				  },
+						 )}
+				  aria-current="page">Stats</Link>
 			    </li>
 			    <li>
-			       <a href="#"
-				  className="hover:text-blue-700 dark:hover:text-blue-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded">Features</a>
+			       <Link href="/dashboard/news"
+				  className={clsx("hover:text-blue-700 dark:hover:text-blue-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded",
+				  {
+					  'bg-sky-100 text-blue-600': pathname === "/dashboard/news"
+				  },
+						 )}>
+				  News</Link>
 			    </li>
 			    <li>
-			       <a href="#"
-				  className="hover:text-blue-700 dark:hover:text-blue-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded">Blog</a>
-			    </li>
-			    <li>
-			       <a href="#"
-				  className="hover:text-blue-700 dark:hover:text-blue-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded">About</a>
-			    </li>
-			    <li>
-			       <a href="#"
-				  className="hover:text-blue-700 dark:hover:text-blue-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded">Contact</a>
+			       <Link href="/dashboard/stats/graphs"
+				  className={clsx("hover:text-blue-700 dark:hover:text-blue-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded",
+				  {
+					  'bg-sky-100 text-blue-600': pathname === "/dashboard/stats/graphs"
+				  },
+						 )}>
+				  Graphs</Link>
 			    </li>
 			 </ul>
 		      </div>
 
 		      <div className="flex items-center gap-4">
-			 <a href="#"
+			 <a href="/login"
 			    className="text-slate-900 text-sm font-semibold hover:text-blue-700 dark:text-slate-50 dark:hover:text-blue-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded">Log
 			    in</a>
 			 <a href="#"
