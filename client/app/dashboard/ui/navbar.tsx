@@ -8,15 +8,10 @@ export function CenterNav () {
 	const pathname = usePathname();
 	return	(
 		<nav
-		   className="flex py-6 px-4 md:px-8 bg-white border-b border-slate-300 dark:border-neutral-700 dark:bg-green-600 min-h-[68px] relative z-20"
+		   className="flex py-6 px-4 md:px-8 border-b border-green-300 bg-green-500 min-h-[68px] relative z-20"
 		   aria-label="Main navigation">
 		   <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4 w-full">
 		   <div className="flex-1 flex">   
-			   <a href="#"
-				 className="min-w-9 inline-block focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded">
-				 <span className="sr-only">Your Company</span>
-				 <img src="https://readymadeui.com/logo-alt.svg" alt="readymadeui logo" className="h-9 w-auto" />
-		      </a>
 		      <div className="py-0 px-32">
 			      <Link href='/dashboard' className="hover:text-blue-700 dark:hover:text-blue-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded"> 
 				Big Chungas 
@@ -51,7 +46,7 @@ export function CenterNav () {
 			       <Link href="/dashboard/stats"
 				  className={clsx("hover:text-blue-700 dark:hover:text-blue-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded",
 				  {
-					  'bg-sky-100 text-blue-600': pathname === "/dashboard/stats"
+					  'bg-black': pathname === "/dashboard/stats"
 				  },
 						 )}
 				  aria-current="page">Stats</Link>
@@ -60,7 +55,7 @@ export function CenterNav () {
 			       <Link href="/dashboard/news"
 				  className={clsx("hover:text-blue-700 dark:hover:text-blue-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded",
 				  {
-					  'bg-sky-100 text-blue-600': pathname === "/dashboard/news"
+					  'bg-black': pathname === "/dashboard/news"
 				  },
 						 )}>
 				  News</Link>
@@ -69,7 +64,7 @@ export function CenterNav () {
 			       <Link href="/dashboard/stats/graphs"
 				  className={clsx("hover:text-blue-700 dark:hover:text-blue-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded",
 				  {
-					  'bg-sky-100 text-blue-600': pathname === "/dashboard/stats/graphs"
+					  'bg-black': pathname === "/dashboard/stats/graphs"
 				  },
 						 )}>
 				  Graphs</Link>
