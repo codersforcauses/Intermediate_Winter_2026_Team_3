@@ -12,8 +12,8 @@ export function CenterNav () {
 		   aria-label="Main navigation">
 		   <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4 w-full">
 		   <div className="flex-1 flex">   
-		      <div className="py-0 px-32">
-			      <Link href='/dashboard' className="hover:text-blue-700 dark:hover:text-blue-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded"> 
+		      <div className="py-0 px-32 flex items-center">
+			      <Link href='/dashboard' className="text-xl font-bold hover:text-neutral-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded"> 
 				Big Chungas 
 			      </Link>
 		      </div>
@@ -44,7 +44,7 @@ export function CenterNav () {
 			 <ul className="flex flex-col gap-8 font-semibold text-sm text-slate-900 dark:text-slate-50 lg:flex-row max-lg:p-6">
 			    <li>
 			       <Link href="/dashboard/stats"
-				  className={clsx("hover:text-blue-700 dark:hover:text-blue-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded",
+				  className={clsx("hover:text-neutral-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded",
 				  {
 					  'bg-black': pathname === "/dashboard/stats"
 				  },
@@ -53,7 +53,7 @@ export function CenterNav () {
 			    </li>
 			    <li>
 			       <Link href="/dashboard/news"
-				  className={clsx("hover:text-blue-700 dark:hover:text-blue-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded",
+				  className={clsx("hover:text-neutral-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded",
 				  {
 					  'bg-black': pathname === "/dashboard/news"
 				  },
@@ -62,7 +62,7 @@ export function CenterNav () {
 			    </li>
 			    <li>
 			       <Link href="/dashboard/stats/graphs"
-				  className={clsx("hover:text-blue-700 dark:hover:text-blue-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded",
+				  className={clsx("hover:text-neutral-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded",
 				  {
 					  'bg-black': pathname === "/dashboard/stats/graphs"
 				  },
@@ -74,11 +74,9 @@ export function CenterNav () {
 
 		      <div className="flex items-center gap-4">
 			 <a href="/login"
-			    className="text-slate-900 text-sm font-semibold hover:text-blue-700 dark:text-slate-50 dark:hover:text-blue-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded">Log
-			    in</a>
-			 <a href="#"
-			    className="py-2 px-3.5 text-sm rounded-md font-semibold cursor-pointer text-white border border-blue-600 bg-blue-600 hover:bg-blue-700 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500">Sign
-			    up</a>
+			    className="py-2 px-3.5 text-sm rounded-md font-semibold cursor-pointer text-white border border-blue-600 bg-blue-600 hover:bg-blue-700 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"> 
+			    Log in
+			    </a>
 
 			 <button type="button" aria-controls="collapseMenu" aria-expanded="false" aria-haspopup="true" id="toggleOpen"
 			    className="cursor-pointer lg:hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded">

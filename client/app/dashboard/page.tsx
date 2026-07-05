@@ -91,19 +91,19 @@ export default function Page() {
 		</div>
 		<div className="mb-10 mt-5 mx-10">
 		<h2 className="text-2xl mb-5"> Game Library </h2>
-		<div className="bg-neutral-900 flex flex-wrap justify-center items-center py-5 px-10">
-			{games.map((games, index) => ( 
-				<GameCard
-					key={index}
-					name={games.name}
-					href={games.href}
-					width={games.width}
-					height={games.height}
-					
-				/>
-							)
-			  )}
-		</div>
+			<div className="bg-neutral-900 flex flex-wrap justify-center items-center px-10 py-5">
+				{games.map((games, index) => ( 
+					<GameCard
+						key={index}
+						name={games.name}
+						href={games.href}
+						width={games.width}
+						height={games.height}
+						
+					/>
+								)
+				  )}
+			</div>
 		</div>
 	  </div>
   );
