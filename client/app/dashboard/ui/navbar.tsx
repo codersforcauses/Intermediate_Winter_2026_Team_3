@@ -13,7 +13,7 @@ export function CenterNav () {
 		   <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4 w-full">
 		   <div className="flex-1 flex">   
 		      <div className="py-0 px-32 flex items-center">
-			      <Link href='/dashboard' className="text-xl font-bold hover:text-neutral-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded"> 
+			      <Link href='/dashboard' className="text-xl font-bold hover:text-neutral-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-500 rounded"> 
 				Big Chungas 
 			      </Link>
 		      </div>
@@ -25,12 +25,12 @@ export function CenterNav () {
 			 <div
 			    className="py-2 px-4 flex justify-between items-center border-b border-slate-300 sticky top-0 bg-white dark:border-neutral-700 dark:bg-neutral-900 lg:hidden max-lg:min-h-[68px]">
 			    <a href="#"
-			       className="inline-block focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded">
+			       className="inline-block focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-500 rounded">
 			       <span className="sr-only">Your Company</span>
 			       <img src="https://readymadeui.com/logo-alt.svg" alt="readymadeui logo dialog" className="h-9 w-auto" />
 			    </a>
 			    <button type="button" aria-controls="collapseMenu" id="toggleClose"
-			       className="cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded">
+			       className="cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-500 rounded">
 			       <span className="sr-only">Close main menu</span>
 			       <svg xmlns="http://www.w3.org/2000/svg" className="size-4 fill-slate-900 dark:fill-slate-50"
 				  aria-hidden="true" viewBox="0 0 329.269 329">
@@ -44,27 +44,27 @@ export function CenterNav () {
 			 <ul className="flex flex-col gap-8 font-semibold text-sm text-slate-900 dark:text-slate-50 lg:flex-row max-lg:p-6">
 			    <li>
 			       <Link href="/dashboard/stats"
-				  className={clsx("hover:text-neutral-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded",
+				  className={clsx("hover:text-neutral-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-500 rounded",
 				  {
-					  'bg-black': pathname === "/dashboard/stats"
+					  'text-neutral-800': pathname === "/dashboard/stats"
 				  },
 						 )}
 				  aria-current="page">Stats</Link>
 			    </li>
 			    <li>
 			       <Link href="/dashboard/news"
-				  className={clsx("hover:text-neutral-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded",
+				  className={clsx("hover:text-neutral-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-500 rounded",
 				  {
-					  'bg-black': pathname === "/dashboard/news"
+					  'text-neutral-800': pathname === "/dashboard/news"
 				  },
 						 )}>
 				  News</Link>
 			    </li>
 			    <li>
 			       <Link href="/dashboard/stats/graphs"
-				  className={clsx("hover:text-neutral-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded",
+				  className={clsx("hover:text-neutral-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-500 rounded",
 				  {
-					  'bg-black': pathname === "/dashboard/stats/graphs"
+					  'text-neutral-800': pathname === "/dashboard/stats/graphs"
 				  },
 						 )}>
 				  Graphs</Link>
@@ -75,7 +75,7 @@ export function CenterNav () {
 		      <div className="flex items-center gap-4">
 			 <a href="/login"
 			    className="py-2 px-3.5 text-sm rounded-md font-semibold cursor-pointer text-white border border-blue-600 bg-blue-600 hover:bg-blue-700 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"> 
-			    Log in
+			    Log Out
 			    </a>
 
 			 <button type="button" aria-controls="collapseMenu" aria-expanded="false" aria-haspopup="true" id="toggleOpen"
