@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Steam Login Test</title>
+</head>
+<body>
+    <h1>Steam Login Test</h1>
+
+    {% if user.is_authenticated %}
+        <p>Logged in as: {{ user.username }}</p>
+        <p>Steam ID: {{ user.profile.steam_id }}</p>
+    {% else %}
+        <form method="post" action="{% url 'social:begin' 'steam' %}">
+            {% csrf_token %}
+            <button type="submit">Login with Steam</button>
+        </form>
+    {% endif %}
+</body>
+</html>
