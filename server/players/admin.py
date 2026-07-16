@@ -1,3 +1,7 @@
 from django.contrib import admin
+from .models import Badge, Friend, Group, Player
 
-# Register your models here.
+admin.site.register(Player)
+admin.site.register(Group)
+admin.site.register(Badge)
+admin.site.register(Friend)

@@ -21,5 +21,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('auth/', include('social_django.urls', namespace='social')),
     path('api/', include('accounts.urls')),
+    path('api/steam/', include('games.urls')),
+    path('api/steam/', include('players.urls')),
     path('', include('dashboard.urls')),
 ]
