@@ -137,6 +137,7 @@ class Achievement(models.Model):
     icon_url = models.URLField(blank=True)
     locked_icon_url = models.URLField(blank=True)
     hidden = models.BooleanField(default=False)
+    global_percent = models.FloatField(null=True, blank=True)
 
     class Meta:
         constraints = [

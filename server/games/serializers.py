@@ -57,6 +57,7 @@ class AchievementSerializer(serializers.ModelSerializer):
             "icon_url",
             "locked_icon_url",
             "hidden",
+            "global_percent",
         ]
 
 
