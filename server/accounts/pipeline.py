@@ -16,9 +16,16 @@ def create_profile(backend, user, uid=None, response=None, *args, **kwargs):
     if backend.name != "steam":
         return
 
-    response = response or {}
-    player_data = response.get("player", {})
+    player_data = {}
+
+    # response may be a dict or an OpenID SuccessResponse object.
+
+    if isinstance(response, dict):
+
+        player_data = response.get("player", {})
+
     steamid = str(uid or player_data.get("steamid") or "").strip()
+    
     if not steamid:
         logger.warning("Steam login completed without a Steam ID for user %s", user.pk)
         Profile.objects.get_or_create(user=user)
