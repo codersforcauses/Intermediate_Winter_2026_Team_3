@@ -1,18 +1,19 @@
-import clsx from 'clsx';
-import Image from 'next/image';
+import type { ReactNode } from "react";
 
-export function DashCard ({ label, stat, icon }) {
-	return	(
-	<div className="relative bg-neutral-900 rounded-lg shadow-lg max-w-xs
-        sm:max-w-md mx-auto transform transition-transform 
-        duration-300 ease-in-out overflow-hidden p-10 m-10
-	flex-1 flex flex-row border border-neutral-500 text-center
-	justify-center items-center">
-		<div className="text-center flex flex-col justify-center items-center">
-			<div className="pb-5">{ icon }</div>
-			<p className="text-2xl">{ stat }</p>
-			<p className="text-base">{ label }</p>
-        	</div>
-	</div>
-	);
+interface DashCardProps {
+  label: string;
+  stat: string | number;
+  icon: ReactNode;
+}
+
+export function DashCard({ label, stat, icon }: DashCardProps) {
+  return (
+    <div className="flex min-w-0 flex-1 items-center justify-center rounded-lg border border-neutral-700 bg-neutral-900 p-6 shadow-lg">
+      <div className="text-center">
+        <div className="mb-3 flex justify-center">{icon}</div>
+        <p className="text-2xl font-bold">{stat}</p>
+        <p className="text-sm text-neutral-300">{label}</p>
+      </div>
+    </div>
+  );
 }

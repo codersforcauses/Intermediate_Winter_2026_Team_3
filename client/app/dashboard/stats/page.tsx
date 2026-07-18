@@ -1,86 +1,49 @@
-import { StatCard } from '@/app/dashboard/ui/statCard';
+"use client";
 
-const games = [
-	{
-		name: "StarWars Knights of the Old Republic",
-		href: "https://cdn.mos.cms.futurecdn.net/vCcmrnsiyvxzwe88gndsod-865-80.jpg.webp",
-		width: 551,
-		height:	828,
-		hours: 20,
-		achievements: 10,
-		lastPlayed: "10/5/20"
-	},
-	{
-		name: "Quake Arena",
-		href: "https://cdn.mos.cms.futurecdn.net/LjALNWXxWWqL99jLxGs4MY-865-80.jpg.webp",
-		width: 551,
-		height:	828,
-		hours: 20,
-		achievements: 10,
-		lastPlayed: "10/5/20"
-	},
-	{
-		name: "DOOM",
-		href: "https://cdn.mos.cms.futurecdn.net/ZUWCJsgatCG95LYwDX92fh-865-80.jpg.webp",
-		width: 551,
-		height:	828,
-		hours: 20,
-		achievements: 10,
-		lastPlayed: "10/5/20"
-	},
-	{
-		name: "Street Fighter 4",
-		href: "https://cdn.mos.cms.futurecdn.net/jDJLZw2paethAfR9VfH5be-865-80.jpg.webp",
-		width: 551,
-		height:	828,
-		hours: 20,
-		achievements: 10,
-		lastPlayed: "10/5/20"
-	},
-	{
-		name: "Half Life",
-		href: "https://cdn.mos.cms.futurecdn.net/BcJjp5eKrp4agmwXAKECML-865-80.jpg.webp",
-		width: 551,
-		height:	828,
-		hours: 20,
-		achievements: 10,
-		lastPlayed: "10/5/20"
-	},
-	{
-		name: "Mortal Kombat",
-		href: "https://cdn.mos.cms.futurecdn.net/8rpTv6MiS3KQcjkwbiWkWe-865-80.jpg.webp",
-		width: 551,
-		height:	828,
-		hours: 20,
-		achievements: 10,
-		lastPlayed: "10/5/20"
-	},
-	{
-		name: "Balder's Gate 2",
-		href: "https://cdn.mos.cms.futurecdn.net/HLR9KMfM9QmwQYhBVbbVnC-865-80.jpg.webp",
-		width: 551,
-		height:	828,
-		hours: 20,
-		achievements: 10,
-		lastPlayed: "10/5/20"
-	},
-]
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
-export default function Page() {
+import { ApiError, apiFetch } from "@/app/lib/api";
+import type { UserGame } from "@/app/types/steam";
+import { StatCard } from "@/app/dashboard/ui/statCard";
+
+export default function StatsPage() {
+  const router = useRouter();
+  const [games, setGames] = useState<UserGame[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    apiFetch<UserGame[]>("/api/steam/games/?ordering=-playtime_forever_minutes")
+      .then(setGames)
+      .catch((caught) => {
+        if (caught instanceof ApiError && (caught.status === 401 || caught.status === 403)) {
+          router.replace("/login");
+          return;
+        }
+        setError(caught instanceof Error ? caught.message : "Unable to load games.");
+      })
+      .finally(() => setLoading(false));
+  }, [router]);
+
+  if (loading) return <p className="p-10">Loading game statistics…</p>;
+
   return (
-	<div className="grid grid-cols-2">
-		{ games.map((games, index) => (
-			<StatCard
-				key={index}
-				src={games.href}
-				width={games.width}
-				height={games.height}
-				title={games.name}
-				hours={games.hours}
-				achievements={games.achievements}
-				lastPlayed={games.lastPlayed}
-			/>
-		))}
-	</div>	
+    <main className="mx-auto max-w-7xl p-6 md:p-10">
+      <h1 className="mb-6 text-3xl font-bold">Game statistics</h1>
+      {error && <p className="rounded-lg border border-red-500 p-4">{error}</p>}
+      {!error && games.length === 0 && <p>No games have been synchronised yet.</p>}
+      <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
+        {games.map((entry) => (
+          <StatCard
+            key={entry.game.steam_appid}
+            src={entry.game.header_image}
+            title={entry.game.name}
+            hours={entry.playtime_hours}
+            lastPlayed={entry.last_played_at ? new Date(entry.last_played_at).toLocaleDateString() : "Never"}
+          />
+        ))}
+      </div>
+    </main>
   );
 }
